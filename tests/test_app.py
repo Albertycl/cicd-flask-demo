@@ -5,7 +5,7 @@ def test_index_shows_title_and_version(monkeypatch):
     monkeypatch.setenv("APP_VERSION", "abc1234")
     response = app.test_client().get("/")
     assert response.status_code == 200
-    assert b"CI/CD demo" in response.data
+    assert b"CI/CD demo!" in response.data
     assert b"abc1234" in response.data
 
 
