@@ -1,0 +1,13 @@
+[Unit]
+Description=cicd-flask-demo (Flask app served by gunicorn)
+
+[Service]
+WorkingDirectory=%h/apps/cicd-flask-demo/current
+EnvironmentFile=%h/apps/cicd-flask-demo/app.env
+ExecStart=%h/apps/cicd-flask-demo/venv/bin/gunicorn --bind 0.0.0.0:8088 --workers 2 app:app
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
